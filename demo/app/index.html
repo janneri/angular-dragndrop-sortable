@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-mocks.js"></script>
+    <style type="text/css">
+    .sortable {
+        cursor: hand;
+    }
+    td {
+        border: thin solid gray;
+    }
+    .over td, li.over {       
+        border-color: thin dashed blue;
+    }
+
+    .col {
+        float: left;
+        margin-right: 36px;
+    }
+    </style>
+
+
+    <script type="text/javascript" src="https://raw.githubusercontent.com/janneri/angular-dragndrop-sortable/master/src/angular-dragndrop-sortable.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+</head>
+
+<body>
+
+    <div ng-app="demo">
+
+        <div ng-controller="DemoCtrl">
+
+            <div class="col">
+                <h3>Sortable table:</h3>
+                <table style="border-collapse: collapse">
+                    <!-- Mark the element whose children are sortable with the attribute drag-drop-sortable -->
+                    <!-- Pass the sorted collection from controller to the directive by setting items="myColl" -->
+                    <tbody drag-drop-sortable items="phones">
+                        <!-- the class sortable is required to mark sortable rows -->
+                        <tr class="sortable" ng-repeat="phone in phones">
+                            <td>{{phone.model}}</td>
+                            <td>{{phone.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col">
+                <h3>Sortable list:</h3>
+                <ul drag-drop-sortable items="phones2">
+                    <li ng-repeat="phone in phones2" class="sortable">{{phone.name}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>

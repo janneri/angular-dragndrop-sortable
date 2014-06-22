@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.1",
+    "gulp-livereload": "^2.1.0",
+    "gulp-serve": "^0.2.0",
+    "gulp-embedlr": "^0.5.2",
+    "gulp-jshint": "^1.6.3"
+  }
+}

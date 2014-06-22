@@ -1,0 +1,23 @@
+{
+  "name": "angular-dragndrop-sortable",
+  "version": "0.0.1",
+  "authors": [
+    "Janne Rintanen <janne.rintanen@gmail.com>"
+  ],
+  "description": "Angular directive for sorting an array with drag-n-drop. Requires AngularJS and HTML5. Does not require JQuery.",
+  "main": "./src/angular-dragndrop-sortable.js",
+  "license": "MIT",
+  "moduleType": [
+    "angularjs"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
