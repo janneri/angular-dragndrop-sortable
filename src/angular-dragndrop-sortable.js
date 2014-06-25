@@ -43,7 +43,13 @@ app.directive('dragDropSortable', ['$window', function($window) {
             }
 
             // Required to display the move cursor
-            e.dataTransfer.dropEffect = 'move';
+            if ( e.dataTransfer ) {
+                e.dataTransfer.dropEffect = 'move';    
+            }
+            else if ( e.originalEvent && e.originalEvent.dataTransfer ) {
+                // in case the event is a jquery event which does not have a dataTransfer property
+                e.originalEvent.dataTransfer.dropEffect = 'move';                
+            }
 
             return false;
         }
