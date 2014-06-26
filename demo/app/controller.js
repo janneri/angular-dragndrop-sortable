@@ -13,6 +13,12 @@ app.controller('DemoCtrl', function($scope, $http) {
     $scope.phones = [];
     $scope.phones2 = [{model: 1, name: 'xx'}, {model: 2, name: 'yy'}, {model: 3, name: 'zz'}, {model: 4, name: 'qq'}];
 
+    $scope.dragDropOptions = {
+        dragEndCallback: function() {
+            console.log("drag ended");
+        }
+    };
+
     $http.get("/phones")
         .success(function(data) {
             $scope.phones = data;

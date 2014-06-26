@@ -104,12 +104,16 @@ app.directive('dragDropSortable', ['$window', function($window) {
             this.classList.remove('over'); // jshint ignore:line
         }
 
-        function handleDrop(e) {
+        function handleDrop(e, dragDropOptions) {
             // by default some browsers do a redirect on drop, which is prevented here
             if (e.stopPropagation) {
                 e.stopPropagation(); 
             }
 
+            if ( dragDropOptions && dragDropOptions.dragEndCallback ) {
+                dragDropOptions.dragEndCallback();
+            }
+            
             return false;
         }
 
@@ -132,7 +136,7 @@ app.directive('dragDropSortable', ['$window', function($window) {
                 .on('dragenter', function(e) { handleDragEnter(scope, resolveItem(this, rootElement)); })
                 .on('dragover', handleDragOver)
                 .on('dragleave', handleDragLeave)
-                .on('drop', handleDrop)
+                .on('drop', function(e) { handleDrop(this, scope.dragDropOptions); })
                 .on('dragend', handleDragEnd);
         }
 
@@ -152,7 +156,8 @@ app.directive('dragDropSortable', ['$window', function($window) {
             restrict: 'A',
             link: link,
             scope: {
-                items: "="
+                items: "=",
+                dragDropOptions: "="
             }
         };
     }

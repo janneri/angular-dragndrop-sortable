@@ -27,6 +27,14 @@ app.controller('DemoCtrl', function($scope, $http) {
     $scope.phones = [];
     $scope.phones2 = [{model: 1, name: 'xx'}, {model: 2, name: 'yy'}, {model: 3, name: 'zz'}, {model: 4, name: 'qq'}];
 
+    // optional (only needed if you want to listen to react to drag drop events)
+    $scope.dragDropOptions = {
+        // at the moment the only option is this callback function
+        dragEndCallback: function() {
+            console.log("drag ended");
+        }
+    };
+
     $http.get("/phones")
         .success(function(data) {
             $scope.phones = data;
@@ -59,7 +67,7 @@ index.html
 
         <div class="col">
             <h3>Sortable list:</h3>
-            <ul drag-drop-sortable items="phones2">
+            <ul drag-drop-sortable items="phones2" drag-drop-options="dragDropOptions">
                 <li ng-repeat="phone in phones2" class="sortable">{{phone.name}}</li>
             </ul>
         </div>
